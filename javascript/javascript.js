@@ -1,12 +1,18 @@
+//Hand gestures as strings
 const handGestures = ["rock", "paper", "scissor"];
 
+//keep track of points and round number
 let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 1;
 
 
 
-
+//Function that will randomly pick from the array from handGestures, Math.floor will make sure its a whole number. 
+//Math.random will make sure its a floating point number and pick between inclusive 0 but not 1.
+//Multiply with the length of handGestures which is 3.
+//handGestures will reference the array from random, which picks from (0 to 2), stored in randomGesture var
+//Returns randomGesture
 function computerPlay() {
     
     var random = Math.floor((Math.random() * handGestures.length));
@@ -15,7 +21,7 @@ function computerPlay() {
     return randomGesture;
 }
 
-
+//function that will take two parameters. Inside is a if/else if/ else statement regarding who wins in the round.
 function playRound(playerSelection, computerSelection) {
 
     if(playerSelection == computerSelection) {
@@ -34,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
+//game function, that will start the game with 5 rounds. Keeps track of scores and round number. Tells user to input a string.
 function game() {
     alert('Game has started!');
     for(let i = 0; i < 5; i++) {
@@ -59,4 +65,5 @@ function game() {
     }
 }
 
+//Call game function
 game();

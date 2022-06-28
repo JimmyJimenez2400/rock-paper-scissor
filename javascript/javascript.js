@@ -15,11 +15,25 @@ let roundNumber = 1;
 //Returns randomGesture
 function computerPlay() {
     
-    var random = Math.floor((Math.random() * handGestures.length));
-    var randomGesture = handGestures[random];
+    let random = Math.floor((Math.random() * handGestures.length));
+    let randomGesture = handGestures[random];
 
     return randomGesture;
 }
+
+//function displays who the winner is after 5 rounds
+function winnerAnnouncer() {
+    if (computerScore == playerScore){
+        alert("IT IS A TIE FROM BOTH CONTESTANTS!!!");
+    }
+    else if(computerScore > playerScore) {
+        alert("COMPUTER WINS!!!");
+    }
+    else {
+        alert("PLAYER WINS!!!")
+    }
+}
+
 
 //function that will take two parameters. Inside is a if/else if/ else statement regarding who wins in the round.
 function playRound(playerSelection, computerSelection) {
@@ -54,16 +68,11 @@ function game() {
         console.log(computerScore);
         roundNumber += 1;
     }
-    if (computerScore == playerScore){
-        alert("IT IS A TIE FROM BOTH CONTESTANTS!!!");
-    }
-    else if(computerScore > playerScore) {
-        alert("COMPUTER WINS!!!");
-    }
-    else {
-        alert("PLAYER WINS!!!")
-    }
+    
 }
 
 //Call game function
 game();
+
+//winnerAnnouncer called
+winnerAnnouncer();

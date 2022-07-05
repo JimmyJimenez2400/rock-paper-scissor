@@ -1,3 +1,10 @@
+//Selectors
+
+
+
+//
+
+
 //Hand gestures as strings
 const handGestures = ["rock", "paper", "scissor"];
 
@@ -57,7 +64,9 @@ function playRound(playerSelection, computerSelection) {
 //game function, that will start the game with 5 rounds. Keeps track of scores and round number. Tells user to input a string.
 function game() {
     alert('Game has started!');
-    for(let i = 0; i < 5; i++) {
+
+
+    /* for(let i = 0; i < 5; i++) {
         alert(`Playing round ${roundNumber}...`)
         let userInput = prompt("Pick either one of these options: rock || paper || scissor")
         const computerPicks = computerPlay();
@@ -67,12 +76,12 @@ function game() {
         alert(`Computer score: ${computerScore}`);
         console.log(computerScore);
         roundNumber += 1;
-    }
+    } */
     
 }
 
 //Call game function
-game();
+//game();
 
 //winnerAnnouncer called
-winnerAnnouncer();
+//winnerAnnouncer();

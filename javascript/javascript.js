@@ -1,8 +1,3 @@
-//Selectors
-
-
-
-//
 
 
 //Hand gestures as strings
@@ -11,7 +6,7 @@ const handGestures = ["rock", "paper", "scissor"];
 //keep track of points and round number
 let playerScore = 0;
 let computerScore = 0;
-let roundNumber = 1;
+let roundWinner = '';
 
 
 
@@ -49,16 +44,14 @@ function playRound(playerSelection, computerSelection) {
         alert("IT'S A TIE");
     }
     else if((computerSelection == "rock" && playerSelection == "scissor") || (computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "scissor" && playerSelection == "paper")) {
-        alert(`You lose! ${computerSelection} beats ${playerSelection}!`)
         computerScore++;
+        roundWinner = 'computer';
     }
     else if((playerSelection == "rock" && computerSelection == "scissor") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissor" && computerSelection == "paper")) {
-        alert(`You win! ${playerSelection} beats ${computerSelection}`);
         playerScore++;
+        roundWinner = 'player';        
     }
-    else {
-        alert("Not a valid input");
-    }
+
 }
 
 //game function, that will start the game with 5 rounds. Keeps track of scores and round number. Tells user to input a string.
@@ -85,3 +78,5 @@ function game() {
 
 //winnerAnnouncer called
 //winnerAnnouncer();
+
+

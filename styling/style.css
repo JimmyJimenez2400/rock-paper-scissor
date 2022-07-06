@@ -1,11 +1,95 @@
-* {
+:root {
+    --primary-light:#fdfa66;
+    --primary-dark:#e74645;
+    --secondary-dark:#1ac0c6;
+    --secondary-dark-hover:#4de8ed;
+    --secondary-dark-active:#208487;
+    --header:#facd60;
+    --primary-yellow:#f4f132;
+}
+
+*, *::before, *::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}
+
+html {
+    position: relative;
+    min-height: 100%;
 }
 
 body {
     font-family: 'Press Start 2P', cursive;
-    background-color: #CAEFD1;
+    background-color: var(--primary-dark);
+    line-height: 1.6;
 }
 
+button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-dark);
+    padding: 2rem;
+}
+.game-title {
+    text-align: center;
+    color: var(--header);
+}
+
+.rules {
+    margin: 0px 0px 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:var(--primary-dark);
+    padding: 10px;
+}
+.sign-rules {
+    margin: 10px;
+    display: flex;
+}
+
+.sign-rules p {
+    margin: 0px 10px 0px 10px;
+}
+
+.sign-rules .hand {
+    font-size: 30px;
+}
+
+.scores-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.score-box {
+   width: 200px;
+}
+
+
+.score-box .score {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+   font-weight: bold;
+}
+
+.player-Choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

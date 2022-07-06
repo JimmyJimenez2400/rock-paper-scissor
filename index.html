@@ -10,45 +10,55 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <script src="./javascript/javascript.js"></script>
+    <script src="./javascript/javascript.js" defer></script>
     <title>Rock Paper Scissors!</title>
 </head>
 
 <body>
     <header>
         <h1 class="game-title">Rock, Paper, Scissor! Go!</h1>
-        <div class="rules-explain">
-            <div class="rock-beats-scissor">
-                <h3>(sign) beats (sign)</h3>
-            </div>
-            <div class="scissor-beats-paper">
-                <h3>(sign) beats (sign)</h3>
-            </div>
-            <div class="paper-beats-rock">
-                <h3>(sign) beats (sign)</h3>
-            </div>
-        </div>
     </header>
     <main class="main-content">
-        <div class="score-and-round-tracker">
-            <div class="player-score"></div>
-            <div class="round-tracker"></div>
-            <div class="computer-score"></div>
+        <div class="rules">
+            <h2 class="rules-title">Rules:</h2>
+            <div class="sign-rules">
+                <p> <span class="hand">✊</span> beats <span class="hand">✌</span></p>
+                <p><span class="hand">🖐</span> beats <span class="hand">✊</span></p>
+                <p><span class="hand">✌</span> beats <span class="hand">🖐</span></p>
+            </div>
         </div>
-        <div class="showdown-interface">
-            <div class="player-choice-selected"></div>
-            <div class="winner-decider"></div>
-            <div class="computer-choice-selected"></div>
+        <div class="scoreboard">
+            <h2 class="score-info" id="scoreInfo">Pick one of the hand signals!</h2>
+            <h3 class="score-message" id="scoreMessage">First to 5 points wins!</h3>
         </div>
-        <div class="player-choice">
-            <button class="rock-btn playerChoice">Rock</button>
-            <button class="paper-btn playerChoice">Paper</button>
-            <button class="scissor-btn playerChoice">Scissor</button>
+        <div class="scores-container">
+            <div class="score-box">
+                <div class="sign" id="playerSign">?</div>
+                <p class="score" id="playerScore">Player: 0</p>
+            </div>
+            <div class="score-box">
+                <div class="sign" id="computerSign">?</div>
+                <p class="score" id="computerScore">Player: 0</p>
+            </div>
+        </div>
+        <div class="player-Choice">
+            <button class="btn btn-square" id="rockBtn">
+                <div class="sign">✊</div>
+            </button>
+            <button class="btn btn-square" id="paperBtn">
+                <div class="sign">🖐</div>
+            </button>
+            <button class="btn btn-square" id="scissorBtn">
+                <div class="sign">✌</div>
+            </button>
         </div>
     </main>
     <footer>
         <div class="copyright">
             <h2>Copyright by Jimmy Jimenez</h2>
+            <script>
+                document.write(new Date().getFullYear())
+            </script>
         </div>
     </footer>
 </body>

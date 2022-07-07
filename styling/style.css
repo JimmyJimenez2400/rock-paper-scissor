@@ -66,13 +66,22 @@ header {
     font-size: 30px;
 }
 
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .scores-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+    text-align: center;
     padding: 10px;
-    max-width: 400px;
+    max-width: 0 auto;
     margin: 0 auto;
+    background-color: var(--secondary-dark);
 }
 
 .score-box {
@@ -85,11 +94,45 @@ header {
     margin-bottom: 20px;
     font-size: 22px;
    font-weight: bold;
+
+
 }
+
+.score-box #playerSign, #computerSign {
+    border: solid 5px var(--primary-dark);
+    background-color: var(--primary-light);
+}
+
 
 .player-Choice {
     display: flex;
     justify-content: center;
+    padding: 10px;
     align-items: center;
     gap: 20px;
+}
+
+
+.btn {
+    border-radius: 10px;
+}
+
+.btn-square{
+    background-color: var(--secondary-dark);
+
+}
+
+.sign {
+    font-size: 10rem;
+}
+
+.btn-square:hover {
+    transition: all .07s ease-in-out;
+    background-color: var(--secondary-dark-hover);
+    border: solid 5px var(--primary-yellow);
+}
+
+.btn-square:active {
+    background-color: var(--secondary-dark-active);
+    
 }

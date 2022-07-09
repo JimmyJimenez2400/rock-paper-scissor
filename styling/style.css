@@ -85,7 +85,7 @@ header {
 }
 
 .score-box {
-   width: 200px;
+   width: 900px;
 }
 
 
@@ -101,6 +101,8 @@ header {
 .score-box #playerSign, #computerSign {
     border: solid 5px var(--primary-dark);
     background-color: var(--primary-light);
+    margin: 10px;
+    padding-left: 9;
 }
 
 

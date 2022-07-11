@@ -1,7 +1,9 @@
 const handGes = document.querySelectorAll('.handGes');
 const playerSign = document.getElementById('playerSign');
-const rounds = document.getElementsByClassName('rounds');
+const rounds = document.querySelector('.rounds');
 const winnerGesture = document.getElementsByClassName('winnerGesture');
+const computerScore = document.getElementById('computerScore');
+const playerScore = document.getElementById('playerScore');
 
 
 
@@ -27,7 +29,10 @@ const winnerGesture = document.getElementsByClassName('winnerGesture');
 //keep track of points and round number
 let playerLives = 5;
 let computerLives = 5;
-let round = 0;
+let currRound = 1;
+let player_score = 0;
+let computer_score = 0;
+
 
 
 
@@ -53,29 +58,51 @@ function computerPlay(){
 }
 
 function roundTracker() {
-    round +=1;
-    rounds.innerText = `Round ${round}`;
-    return rounds;
+    rounds.textContent = `Round: ${currRound}`;
+
+    return currRound;
+}
+
+// function endGame(){
+//     if(playerLives > 0 && computerLives < 0){
+//          modal.textContent = `YOU HAVE WON AGAINST ALL ODDS!!!`
+//     }
+// }
+
+
+function scoreTracker(){
+    playerScore.textContent = `Player: ${player_score}`;
+    computerScore.textContent = `Computer: ${computer_score}`;
+
+    return [playerScore, computerScore];
 }
 
 function playRound(playerSelection, computerSelection){
 
     if(playerSelection === computerSelection){
         winnerGesture.innerText = `It's a tie!!!`;
+        currRound += 1;
     }
     else if((playerSelection === 'rock' && computerSelection === 'scissor') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissor' && computerSelection === 'paper')){
 
         winnerGesture.textContent = `${playerSelection} BEATS ${computerSelection}`;
         computerLives -= 1;
+        currRound += 1;
+        player_score +=1;
+        
     }
     else if((computerSelection === 'rock' && playerSelection === 'scissor') || (computerSelection === 'paper' && playerSelection === 'rock') || (computerSelection === 'scissor' && playerSelection === 'paper')){
         winnerGesture.textContent = `${computerSelection} BEATS ${playerSelection}!!!`;
         playerLives -= 1;
+        currRound += 1;
+        computer_score +=1;
+        
     }
 
     const lives = document.querySelector('.lives');
     lives.innerText = `Player Lives: ${playerLives} | Computer Lives: ${computerLives}`;
     return [playerLives, computerLives];
+
 }
 
 function game() {
@@ -93,8 +120,12 @@ function game() {
                 playerSelection ='scissor';
                 playerSign.textContent = '✌';
             }      
-            roundTracker();
+            
             playRound(playerSelection, computerPlay());
+            scoreTracker();
+            roundTracker();
+            
+            //endGameResults();
         })
     })
 }

@@ -34,8 +34,8 @@
         <div class="game-results">
             <p class="rounds">Round: 1</p>
             <p class="lives">Player Lives: 5 | Computer Lives: 5</p>
-            <p class="roundWinner">Who won?</p>
-            <p class="winnerGesture">Lol</p>
+            <p class="roundWinner"></p>
+            <p class="winnerGesture"></p>
         </div>
         <div class="scores-container">
             <div class="score-box">
@@ -67,6 +67,11 @@
             </script>
         </div>
     </footer>
+    <div class="modal" id="endgameModal">
+        <p class="modal-title" id="endgameMsg"></p>
+        <button class="btn btn-restart" id="restartBtn">Play again?</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
 </body>
 
 </html>

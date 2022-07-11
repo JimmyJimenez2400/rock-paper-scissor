@@ -1,28 +1,21 @@
+//UI
+
 const handGes = document.querySelectorAll('.handGes');
 const playerSign = document.getElementById('playerSign');
 const rounds = document.querySelector('.rounds');
-const winnerGesture = document.getElementsByClassName('winnerGesture');
 const computerScore = document.getElementById('computerScore');
 const playerScore = document.getElementById('playerScore');
+const endgameModal = document.getElementById('endgameModal');
+const endgameMsg = document.getElementById('endgameMsg');
+const overlay = document.getElementById('overlay');
+const restartBtn = document.getElementById('restartBtn')
 
 
 
-// rockBtn.addEventListener('click', function() {
-//     playerSign.textContent = '✊';
-//     playRound('rock', computerPlay());
-    
-// });
 
-// paperBtn.addEventListener('click', function() {
-//     playerSign.textContent = '🖐';
-//     playRound('paper', computerPlay());
-    
-// });
-
-// scissorBtn.addEventListener('click', function() {
-//     playerSign.textContent = '✌';
-//     playRound('scissor', computerPlay());
-// });
+//Event Listeners
+overlay.addEventListener('click', closeEndGameModal);
+restartBtn.addEventListener('click', restartGame);
 
 
 
@@ -39,7 +32,7 @@ let computer_score = 0;
 
 //Functions
 function computerPlay(){
-    let computerSign = document.getElementById('computerSign')
+    let computerSign = document.getElementById('computerSign');
     const handGestures = ['rock', 'paper', 'scissor'];
     const randomChoice = handGestures[Math.floor(Math.random() * handGestures.length)];
 
@@ -63,11 +56,6 @@ function roundTracker() {
     return currRound;
 }
 
-// function endGame(){
-//     if(playerLives > 0 && computerLives < 0){
-//          modal.textContent = `YOU HAVE WON AGAINST ALL ODDS!!!`
-//     }
-// }
 
 
 function scoreTracker(){
@@ -77,25 +65,31 @@ function scoreTracker(){
     return [playerScore, computerScore];
 }
 
+
 function playRound(playerSelection, computerSelection){
+    const winRoundAnnouncer = document.querySelector('.winnerGesture');
+    const roundWinner = document.querySelector('.roundWinner');
 
     if(playerSelection === computerSelection){
-        winnerGesture.innerText = `It's a tie!!!`;
+        roundWinner.textContent = `It's a tie!!!`;
         currRound += 1;
+        winRoundAnnouncer.textContent = "THE ROUND ENDED WITH A DRAW!"
     }
     else if((playerSelection === 'rock' && computerSelection === 'scissor') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissor' && computerSelection === 'paper')){
 
-        winnerGesture.textContent = `${playerSelection} BEATS ${computerSelection}`;
+        roundWinner.textContent = `${playerSelection} BEATS ${computerSelection}`;
+        winRoundAnnouncer.textContent = "YOU WIN THIS ROUND! LETS GO!!!";
         computerLives -= 1;
         currRound += 1;
         player_score +=1;
         
     }
     else if((computerSelection === 'rock' && playerSelection === 'scissor') || (computerSelection === 'paper' && playerSelection === 'rock') || (computerSelection === 'scissor' && playerSelection === 'paper')){
-        winnerGesture.textContent = `${computerSelection} BEATS ${playerSelection}!!!`;
+        roundWinner.textContent = `${computerSelection} BEATS ${playerSelection}!!!`;
         playerLives -= 1;
         currRound += 1;
         computer_score +=1;
+        winRoundAnnouncer.textContent = 'THE COMPUTER HAS WON THIS ROUND! DO BETTER!';
         
     }
 
@@ -109,6 +103,12 @@ function game() {
     let playerSelection;
     handGes.forEach((gesture) => {
         gesture.addEventListener('click', () => {
+
+
+            if (isGameOver()) {
+                openEndgameModal()
+                return
+              }
             if(gesture.classList.contains('rockBtn')){
                 playerSign.textContent = '✊';
                 playerSelection ='rock';
@@ -124,8 +124,14 @@ function game() {
             playRound(playerSelection, computerPlay());
             scoreTracker();
             roundTracker();
-            
-            //endGameResults();
+
+            if(isGameOver()){
+                openEndGameModal();
+                setFinalMessage();
+            }
+
+
+
         })
     })
 }
@@ -135,5 +141,29 @@ function flCapital(str) {
     if (!str) return;
     return str.match("^[a-z]") ? str.charAt(0).toUpperCase() + str.substring(1) : str;
 }
+
+function isGameOver(){
+    return player_score === 5 || computer_score === 5;
+}
+
+function openEndGameModal(){
+    endgameModal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeEndGameModal(){
+    endgameModal.classList.remove('active');
+    overlay.classList.add('active');
+}
+
+function setFinalMessage(){
+    return player_score > computer_score ? (endgameMsg.textContent ='You won!') : (endgameMsg.textContent = 'You lost...');
+}
+
+function restartGame() {
+    window.location.reload();
+    return false;
+  }
+
 
 game();
